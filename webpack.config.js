@@ -1,15 +1,42 @@
-const { merge } = require("webpack-merge");
-const singleSpaDefaults = require("webpack-config-single-spa-react");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
-module.exports = (webpackConfigEnv, argv) => {
-  const defaultConfig = singleSpaDefaults({
-    orgName: "JnJ",
-    projectName: "HelloWorld",
-    webpackConfigEnv,
-    argv,
-  });
+module.exports = {
+  entry: "./src/index",
+  cache: false,
 
-  return merge(defaultConfig, {
-    // modify the webpack config however you'd like to by adding to this object
-  });
+  mode: "development",
+  devtool: "source-map",
+
+  optimization: {
+    minimize: false,
+  },
+
+  resolve: {
+    extensions: [".jsx", ".js", ".json"],
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        loader: require.resolve("babel-loader"),
+        options: {
+          presets: [require.resolve("@babel/preset-react")],
+        },
+      },
+    ],
+  },
+
+  plugins: [
+    new ModuleFederationPlugin({
+      name: "parcelReact",
+      library: { type: "var", name: "parcelReact" },
+      filename: "remoteEntry.js",
+      exposes: {
+        HelloWorld: "./src/HelloWorld",
+      },
+      shared: ["react", "react-dom", "single-spa-react"],
+    }),
+  ],
 };
