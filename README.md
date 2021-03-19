@@ -4,7 +4,7 @@ Simple "Hello World" single-spa/React based Microfrontend.
 
 ## Origin
 
-Scaffolded using create-single-spa
+Scaffolded using create-single-spa.
 
 ## Installation
 
