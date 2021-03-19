@@ -2,10 +2,22 @@
 
 Simple "Hello World" single-spa/React based Microfrontend.
 
-![react-annotated-paragraph](https://github.com/dgulabs/react-annotated-paragraph/blob/master/react-annotated-paragraph.gif)
+## Origin
+
+Scaffolded using create-single-spa
 
 ## Installation
 
 ```shell
 yarn
 ```
+
+## Start
+
+```shell
+yarn start
+```
+
+## main branch
+
+Javascript chunk accessible via `http://localhost:8500/Company-HelloWorld.js`
