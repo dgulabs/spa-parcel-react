@@ -20,4 +20,4 @@ yarn start
 
 ## main branch
 
-Javascript chunk accessible via `http://localhost:8500/Company-HelloWorld.js`
+Javascript chunk accessible via [http://localhost:8500/Company-HelloWorld.js](http://localhost:8500/Company-HelloWorld.js)
